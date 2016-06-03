@@ -1,0 +1,94 @@
+.protpolioContainer {
+    display: flex;
+    flex-direction: row; 
+    align-items:stretch;
+       
+}
+
+.menu {
+    /*width: 350px;*/
+    /*height: 600px;*/
+    /*border: 1px solid black;*/
+    /*float: left;*/
+    /*margin: 5px; */
+    width: 35%;
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+      
+}
+
+.gamesContainer {
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*align-items: stretch;*/
+    /*justify-content: flex-start;*/
+    
+}
+
+
+.game {
+    /*height: 220px;
+    width: 400px;
+    margin: 30px;*/
+    /*float: left;*/
+    /*flex: 0 0 50%;*/
+    width: 43%;
+    margin: 2%;
+    border: 1px solid grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    height: 220px;
+    width: 400px;
+    opacity: 0.50;
+    position: relative;
+    cursor:pointer;
+}
+
+.game1 h3 {
+    font-family: "Lucida Grande", Tahoma;
+	font-size: 25px;
+	font-weight: 400;
+	font-variant: normal;
+	text-transform: uppercase;
+    color: #222;
+	/*text-align: center;*/
+	letter-spacing: 0.3em;
+    /*position: absolute;*/
+    /*top: 105px;*/
+    /*left: 480px;*/
+    cursor:pointer;    
+}
+
+body { 
+  background-image: url('background.jpg'); 
+  background-size: cover;
+}
+
+.headline {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 2.2em;
+	/*margin-top: 170px; margin-bottom: 0px;*/
+	/*text-align: center;*/
+    font-weight: normal;
+    color: #222;
+}
+
+.subheadline {
+    font-family: "Lucida Grande", Tahoma;
+	font-size: 1em;
+	font-weight: lighter;
+	font-variant: normal;
+	text-transform: uppercase;
+	color: #666666;
+    /*margin-top: 10px;*/
+	/*text-align: center;*/
+	letter-spacing: 0.3em;
+}
