@@ -12,6 +12,7 @@
     flex-wrap: wrap;
     flex: 0 0 3em;
     margin: 3%;
+    padding: 3%;
     white-space: nowrap
 }
 
@@ -20,7 +21,7 @@
     justify-content: space-around;
     align-items: stretch; 
     padding: 0;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     flex: 0 0 50%
 }
 
@@ -50,7 +51,22 @@ img {
     cursor:pointer;  
     position: absolute;
     top: 35%;
-    left: 47%;
+    left: 33%;
+}
+
+.game2 h3 {
+    font-family: "Lucida Grande", Tahoma;
+	font-size: 25px;
+	font-weight: 400;
+	font-variant: normal;
+	text-transform: uppercase;
+    color: #222;
+	text-align: center;
+	letter-spacing: 0.3em;
+    cursor:pointer;  
+    position: absolute;
+    top: 35%;
+    left: 60%;
 }
 
 body { 

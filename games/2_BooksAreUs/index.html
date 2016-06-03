@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title> BooksAreUs </title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/myStyle.css">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    </head>
+    
+    <body onload="init()">
+        <header>
+        <h1> HASAFRANIT </h1>
+        </header>
+        
+        <div class = "tableAndAddBookContainer" >
+        
+        <div class="tblContainer"></div>
+        
+        <!--<button onclick="readAndAddNewBook()"> Add New Book! </button>-->
+        <div class = "newBookContainer" > 
+            
+            <h3> Add new book </h3>
+            <label for="newBookName">the book name</label> 
+            <input type="newBookName" name="newBookName" id = "newBookName" placeholder="" autofocus  />
+            <label for="newBookPrice">the book price</label>             
+            <input type="newBookPrice" name="newBookPrice" id = "newBookPrice" placeholder=""/>
+            
+            <button class = "addBook" onclick="readAndAddNewBook()"> Add </button>
+
+        </div>
+        
+        </div>
+        
+        <div class = "bookDetailsContainer" >
+            <button class="close" onclick="closePopup()">X</button>
+            <div class = "bookDetailsMainContainer">
+                
+            <div class = "imgContainer" ></div>
+            
+            <div class = descContainer> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde sequi sed repudiandae soluta dolore, dolores voluptatum libero omnis laudantium mollitia odio adipisci? Impedit aliquid quasi laudantium, sunt non sed? Impedit.
+                <div class = "buttonContainer">
+                <button class = "like" onclick = "addLike()" > &#128077; </button>
+                <button class = "dislike" onclick = "addDislike()" > &#128078; </button>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+        </div>
+        
+        
+            
+    <script src="js/main.js"></script>
+    </body>
+    
+    
+</html>    
