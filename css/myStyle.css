@@ -1,55 +1,41 @@
 .protpolioContainer {
+    position: absolute;
     display: flex;
     flex-direction: row; 
-    align-items:stretch;
-       
 }
 
 .menu {
-    /*width: 350px;*/
-    /*height: 600px;*/
-    /*border: 1px solid black;*/
-    /*float: left;*/
-    /*margin: 5px; */
-    width: 35%;
     display: flex;  
     flex-direction: column;
     align-items: center;
     justify-content: center;
-      
+    flex-wrap: wrap;
+    flex: 0 0 3em;
+    margin: 3%;
+    white-space: nowrap
 }
 
 .gamesContainer {
-    width: 75%;
     display: flex;
-    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch; 
+    padding: 0;
     flex-wrap: wrap;
-    /*align-items: stretch;*/
-    /*justify-content: flex-start;*/
-    
+    flex: 0 0 50%
 }
 
 
 .game {
-    /*height: 220px;
-    width: 400px;
-    margin: 30px;*/
-    /*float: left;*/
-    /*flex: 0 0 50%;*/
-    width: 43%;
-    margin: 2%;
-    border: 1px solid grey;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin: 2%; 
 }
 
 img {
-    height: 220px;
-    width: 400px;
-    opacity: 0.50;
-    position: relative;
-    cursor:pointer;
+    max-width:100%;
+    max-height:100%;
+    min-width: 1%;
+    position:relative;
+    overflow:hidden;
+    opacity: 0.5  
 }
 
 .game1 h3 {
@@ -59,24 +45,22 @@ img {
 	font-variant: normal;
 	text-transform: uppercase;
     color: #222;
-	/*text-align: center;*/
+	text-align: center;
 	letter-spacing: 0.3em;
-    /*position: absolute;*/
-    /*top: 105px;*/
-    /*left: 480px;*/
-    cursor:pointer;    
+    cursor:pointer;  
+    position: absolute;
+    top: 35%;
+    left: 47%;
 }
 
 body { 
-  background-image: url('background.jpg'); 
+  background-image: url('../img/background.jpg'); 
   background-size: cover;
 }
 
 .headline {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 2.2em;
-	/*margin-top: 170px; margin-bottom: 0px;*/
-	/*text-align: center;*/
     font-weight: normal;
     color: #222;
 }
@@ -88,7 +72,5 @@ body {
 	font-variant: normal;
 	text-transform: uppercase;
 	color: #666666;
-    /*margin-top: 10px;*/
-	/*text-align: center;*/
 	letter-spacing: 0.3em;
 }
