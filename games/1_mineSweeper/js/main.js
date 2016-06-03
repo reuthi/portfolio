@@ -30,12 +30,13 @@ var gState = {
 function initGame() {    
     if (localStorage.getItem('level')) {
         gLevelSelected = gLevel[localStorage.getItem('level')];
+        console.log(gLevelSelected);
         gBoard = [];
         buildBoard(); 
     }
-       
     renderBoard(gBoard, '.boardContainer');
-    updateMinesMarked()
+    updateMinesMarked();
+    updateTime();
 }
 
 
@@ -47,7 +48,7 @@ function updateTime() {
 
 function updateMinesMarked() {
     var elSpanMines = document.getElementById('spanMinesCounter');
-    elSpanMines.innerText = gLevelSelected.mines - gState.markedCount;
+    elSpanMines.innerText = gLevelSelected.mines - gState.markedCount;    
 }
 
 
@@ -75,7 +76,7 @@ function buildBoard() {
         
         for (var j = 0; j < gBoard[i].length; j++) {
             if (gBoard[i][j] !== MINES) {
-                gBoard[i][j] = setMinesNegsCount(i, j); 
+                gBoard[i][j] = getMinesNegsCount(i, j); 
                 
                 if (gBoard[i][j] === 0) gBoard[i][j] = EMPTY;
             }
@@ -85,7 +86,7 @@ function buildBoard() {
 }
     
 
-function setMinesNegsCount(i, j) {
+function getMinesNegsCount(i, j) {
     var count = 0;
     
     for (var a = i-1; a <= i+1; a++) {
@@ -109,8 +110,7 @@ function renderBoard(mat, selector) {
         strHTML += '<tr>';
         row.forEach(function (cell, j) {
             var className = 'cell cell_' + i + '_' + j;
-            strHTML += '<td class="' + className + ' " onclick = "cellClicked(this)" oncontextmenu = "cellMarked(this)" ></td>'
-        //  ' + i + j + 
+            strHTML += '<td class="' + className + ' " onclick = "cellClicked(this,' + i +',' + j + ')" oncontextmenu = "cellMarked(this, ' + i +',' + j + ')" ></td>'
             });    
         strHTML += '</tr>'
   })
@@ -122,7 +122,7 @@ function renderBoard(mat, selector) {
 
 function startTimer () {
     if (!gSecsInterval) {
-        gSecsInterval = setInterval(function () {
+        gSecsInterval = setInterval(function () {            
         gTimePassed++;
         updateTime();
         }, 100)        
@@ -130,13 +130,11 @@ function startTimer () {
 }
 
 
-function cellClicked (elCell, i, j) {    
-    gState.shownCount++;     
-    i = getElementIndex(elCell)[0];
-    j = getElementIndex(elCell)[1];        
-    startTimer ()
+function cellClicked (elCell, i, j) {   
+    gState.shownCount++;          
+    startTimer ();
     elCell.innerHTML = gBoard[i][j];   
-    elCell.classList.add('marked');             
+    elCell.classList.add('open');             
     expandShown (gBoard, elCell, i, j);   
     paintNumber (gBoard, elCell, i, j)
     checkGameOver(gBoard ,i, j);
@@ -154,11 +152,11 @@ function expandShown (board, elCell, i, j) {
                 if ( a < 0 || a >= board.length ) continue;  
                 if ( b < 0 || b >= board.length ) continue;
                 if ( a === i && b === j ) continue;
-                if (board[a][b] >= 0 && elCell.style.backgroundColor !== 'white') {
+                if (board[a][b] >= 0 && !elCell.classList.contains('open')) {
                     gState.shownCount++;
                     paintNumber (gBoard, elCell, a, b);
                     elCell.innerHTML = gBoard[a][b];  
-                    elCell.classList.add('marked');             
+                    elCell.classList.add('open');             
                 }
             }
         } 
@@ -176,7 +174,7 @@ function expandShown (board, elCell, i, j) {
                 if (board [a][b] === MINES) {
                     elCell = document.querySelector('.cell_' + a + '_' + b);  
                     elCell.innerHTML = gBoard[i][j]; 
-                    elCell.classList.add('marked');              
+                    elCell.classList.add('open');              
                 }
             }
         }
@@ -185,21 +183,14 @@ function expandShown (board, elCell, i, j) {
 }
 
 
-function cellMarked(elCell) {
+function cellMarked(elCell, i, j) {
    document.body.oncontextmenu = function() {
        return false }
-       
-   elCell.style.backgroundColor = 'lightsalmon';
-   elCell.style.pointerEvents = 'none'; 
-   elCell.innerHTML = MARKED;
-    
-    var i = getElementIndex(elCell)[0];
-    var j = getElementIndex(elCell)[1];
-    
+   elCell.classList.add('marked');              
+   elCell.innerHTML = MARKED;   
    gBoard[i][j] = MARKED;
    gState.markedCount++;  
-   
-   updateMinesMarked();
+   updateMinesMarked();   
    checkGameOver(gBoard ,i, j);
 }
     
@@ -226,47 +217,21 @@ function checkGameOver(board, i, j) {
 }
 
 
-function getElementIndex (elCell) {
-   var cells = elCell.classList;
-   var cellsClass = cells[1].substring(5)
-   var cellsIndex = cellsClass.split('_')
-   cellsIndex = [+cellsIndex[0], +cellsIndex[1]]
-   return cellsIndex;
-}
-
-
 function paintNumber (board, elCell, i, j) {
-    switch (board[i][j]) {
-        case 1:
-            elCell.style.color = 'blue';
-            break;
-        case 2:
-            elCell.style.color = 'green';
-            break;
-        case 3:
-            elCell.style.color = 'red';
-            break;
-        case 4:
-            elCell.style.color = 'black';
-            break;
-        case 5:
-            elCell.style.color = 'pink';
-            break;
-        case 6: 
-            elCell.style.color = 'purple';
-            break;            
-        case 7:
-            elCell.style.color = 'orange';
-            break;
-        case 8:
-            elCell.style.color = 'darkblue';
-            break;
-    }
+    var colorsToPaint = ['white', 'blue', 'green', 'red', 'black', 'pink', 'purple'];
+        elCell.style.color = colorsToPaint[gBoard[i][j]];
+        console.log('colorsToPaint[gBoard[i][j]]', colorsToPaint[gBoard[i][j]], 'gBoard[i][j]', gBoard[i][j]);
 }
 
 
 function startAgain() {
     clearInterval(gSecsInterval); 
+    gSecsInterval = false;
+    gTimePassed = 0;
+    gState = {
+                shownCount: 0, 
+                markedCount: 0
+            }
    initGame(); 
 }
 

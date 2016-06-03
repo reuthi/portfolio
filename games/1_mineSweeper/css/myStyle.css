@@ -111,7 +111,12 @@ td {
     -webkit-margin-end: 0px;   
 }
 
-.marked {
+.open {
     background-color: white;
+}
+
+.marked {
+    background-color: lightsalmon;
+    pointer-events: none;
 }
 
