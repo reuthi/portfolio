@@ -11,7 +11,7 @@ header {
 }
 
 h1 {
-    align-self: center;
+    /*align-self: center;*/
     font-size: 4em;
     letter-spacing: 10px;
     font-weight: 400
@@ -23,6 +23,7 @@ h1 {
     justify-content: space-around;
     align-items: flex-start;
     padding-top: 60px; 
+    flex-wrap: wrap;
 }
 
 
@@ -108,7 +109,7 @@ table {
 
 table, th, td {
     border: 1px solid black;
-    padding: 6px;    
+    padding: 2px;    
 }
 
 th > button {
@@ -117,8 +118,18 @@ th > button {
     font-family: 'Open Sans Condensed', sans-serif;
     letter-spacing: 2.5px;
     font-size: 1em;
-    font-weight: 700;
+    font-weight: 900;
     cursor: pointer;
+    padding: 2px;    
+    
+}
+
+th {
+/*text-align: center*/
+    font-weight: 200;
+    text-align: center;
+
+
 }
 
 td > button {

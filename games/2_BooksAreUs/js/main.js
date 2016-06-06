@@ -47,7 +47,7 @@ function init () {
             
 function  renderBooks(table, selector) {
     var elContainer = document.querySelector(selector);
-    var strHTML = '<table class = "myTable" > <tbody>';
+    var strHTML = '<table class = "myTable"> <tbody>';
     
         strHTML += '<th>'+ 'id' + '</th>'; 
         strHTML += '<th> <button class = "asending" onclick = "sortByName(this)"> ' + 'name' + '</button></th>'; 
