@@ -16,18 +16,18 @@
     white-space: nowrap
 }
 
-.gamesContainer {
+/*.gamesContainer {
     display: flex;
     justify-content: space-around;
     align-items: stretch; 
     padding: 0;
-    /*flex-wrap: wrap;*/
     flex: 0 0 50%
-}
+}*/
 
 
 .game {
   margin: 2%; 
+  padding: 2%;
 }
 
 img {
@@ -46,12 +46,8 @@ img {
 	font-variant: normal;
 	text-transform: uppercase;
     color: #222;
-	text-align: center;
 	letter-spacing: 0.3em;
     cursor:pointer;  
-    position: absolute;
-    top: 35%;
-    left: 33%;
 }
 
 .game2 h3 {
@@ -64,9 +60,6 @@ img {
 	text-align: center;
 	letter-spacing: 0.3em;
     cursor:pointer;  
-    position: absolute;
-    top: 35%;
-    left: 60%;
 }
 
 body { 
